@@ -28,7 +28,7 @@ def calculate():
         elif operation == 'divide':
             if number2 == 0:
                 return jsonify({'result': 'Ошибка: Деление на ноль'})
-            result = number1 / number2
+            result = round(number1 / number2, 4)
         else:
             return jsonify({'result': 'Неизвестная операция'}), 400
         return jsonify({'result': result})
@@ -37,4 +37,6 @@ def calculate():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
+
+
