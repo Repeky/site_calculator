@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(156, 161, 162);
+}
+
+h1 {
+    text-align: center;
+}
+
+
+/* Стили для контейнера */
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Стили для изображения */
+.my-image {
+    width: 100px;
+    margin-left: 10px;
+}
+
+
+/* Стили для контейнера */
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Стили для изображения */
+.my-image {
+    width: 200px;
+    margin-left: 350px;
+}
+
+

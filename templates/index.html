@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="static/style/style.css">
+</head>
+<body>
+    <h1>Калькулятор</h1>
+    <input type="number" id="number1" placeholder="Число 1">
+    <input type="number" id="number2" placeholder="Число 2">
+    <select id="operation">
+        <option value="add">Сложение</option>
+        <option value="subtract">Вычитание</option>
+        <option value="multiply">Умножение</option>
+        <option value="divide">Деление</option>
+    </select>
+    <button id="submit">Вычислить</button>
+    <div id="result">Результат будет отображен здесь</div>
+
+    <img src="{{ url_for('static', filename='img/calculator.png') }}" alt="Калькулятор" class="my-image">
+
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function(e) {
+            e.preventDefault();
+            const number1 = document.getElementById('number1').value;
+            const number2 = document.getElementById('number2').value;
+            const operation = document.getElementById('operation').value;
+
+            fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    number1: number1,
+                    number2: number2,
+                    operation: operation,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = 'Результат: ' + data.result;
+            })
+            .catch((error) => {
+                console.error('Ошибка:', error);
+            });
+        });
+    </script>
+</body>
+</html>
